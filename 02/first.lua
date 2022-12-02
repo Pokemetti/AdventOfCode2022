@@ -29,19 +29,16 @@ local win_chart = {
 
 local score = 0
 
-repeat
-	-- Read the next line from the file
-	local input = file:read("*l")
-	if input == nil then
-		-- Break if the end has been reached
-		break
-	end
-
+local input = file:read("*l")
+while input do
 	local last_char = input:sub(#input, #input)
 	
 	-- Whether you are supposed to win, draw or lose
 	local outcome = win_chart[input]
 	score = score + win_points[outcome] + shape_points[last_char]
-until input == nil
+
+	-- Read the next line from the file
+	input = file:read("*l")
+end
 
 print(score)

@@ -46,14 +46,8 @@ local right_table = {
 
 local score = 0
 
-repeat
-	-- Read the next line from the file
-	local input = file:read("*l")
-	if input == nil then
-		-- Break if the end has been reached
-		break
-	end
-
+local input = file:read("*l")
+while input do
 	local first_char = input:sub(1, 1)
 	local last_char = input:sub(#input, #input)
 	
@@ -63,6 +57,9 @@ repeat
 	local shape = right_table[outcome][first_char]
 
 	score = score + win_points[win_chart[last_char]] + shape_points[shape]
-until input == nil
+
+	-- Read the next line
+	input = file:read("*l")
+end
 
 print(score)
