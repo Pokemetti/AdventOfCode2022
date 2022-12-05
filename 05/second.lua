@@ -66,6 +66,7 @@ while true do
 	end
 end
 
+-- Print the solution code
 for i = 1, #stacks do
 	local table = stacks[i]
 	if #table > 0 then
